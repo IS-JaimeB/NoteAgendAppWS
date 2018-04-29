@@ -2,8 +2,6 @@ package note.service;
 
 import java.util.List;
 import javax.persistence.EntityManager;
-import note.Note;
-
 
 public abstract class AbstractFacade<T> {
 
@@ -66,6 +64,14 @@ public abstract class AbstractFacade<T> {
         return note.toString();
     }    
     
+    public void deleteAllNotesFromUser(String email) {
+        List<T> list = getEntityManager().createNamedQuery("Note.deleteAllNotesFromUser").setParameter("email", email).getResultList();
+        String result = "";
+        for (T o : list) {
+            int end = o.toString().indexOf(" Content = ");
+            deleteNote(Integer.parseInt(o.toString().substring(5, end)));
+        }
+    }
     
     public T existsNote(int id) {
         return (T) getEntityManager().createNamedQuery("Note.existsNote").setParameter("id", id).getSingleResult();

@@ -19,15 +19,17 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Note.findAll", query = "SELECT n FROM Note n") 
     , @NamedQuery(name = "Note.findById", query = "SELECT n FROM Note n WHERE n.id = :id")
-    , @NamedQuery(name = "Note.viewNotes", query = "SELECT n FROM Note n WHERE n.email = :email")  
+    , @NamedQuery(name = "Note.viewNotes", query = "SELECT n FROM Note n WHERE n.email = :email")          
     , @NamedQuery(name = "Note.existsNote", query = "SELECT n FROM Note n WHERE n.id = :id")      
-    , @NamedQuery(name = "Note.searchNote", query = "SELECT n FROM Note n WHERE n.id = :id")      
+    , @NamedQuery(name = "Note.searchNote", query = "SELECT n FROM Note n WHERE n.id = :id")   
+    , @NamedQuery(name = "Note.deleteAllNotesFromUser", query = "SELECT n FROM Note n WHERE n.email = :email")         
     , @NamedQuery(name = "Note.findByContent", query = "SELECT n FROM Note n WHERE n.content = :content")
-    ,@NamedQuery(name = "Note.deleteNote", query = "DELETE FROM Note n WHERE n.id = :id")
-    ,@NamedQuery(name = "Note.checkNoteOwner", query = "SELECT n FROM Note n WHERE n.id = :id AND n.email = :email")    
-    ,@NamedQuery(name = "Note.countNotes", query = "SELECT n FROM Note n WHERE n.email = :email")   
-    ,@NamedQuery(name = "Note.modifyNote", query = "UPDATE Note n SET n.content = :content WHERE n.id = :id")         
+    , @NamedQuery(name = "Note.deleteNote", query = "DELETE FROM Note n WHERE n.id = :id")
+    , @NamedQuery(name = "Note.checkNoteOwner", query = "SELECT n FROM Note n WHERE n.id = :id AND n.email = :email")    
+    , @NamedQuery(name = "Note.countNotes", query = "SELECT n FROM Note n WHERE n.email = :email")   
+    , @NamedQuery(name = "Note.modifyNote", query = "UPDATE Note n SET n.content = :content WHERE n.id = :id")         
     , @NamedQuery(name = "Note.findByEmail", query = "SELECT n FROM Note n WHERE n.email = :email")})
+
 public class Note implements Serializable {
 
     private static final long serialVersionUID = 1L;

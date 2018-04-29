@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package note.service;
 
 import java.util.List;
@@ -124,6 +119,13 @@ public class NoteFacadeREST extends AbstractFacade<Note> {
     public String deleteNote(@PathParam("id") int id) {
         return super.deleteNote(id);
     }    
+
+    @GET
+    @Path("deleteAllNotesFromUser/{email}")
+    @Produces(MediaType.APPLICATION_XML)
+    public void deleteAllNotesFromUser(@PathParam("email") String email) {
+        super.deleteAllNotesFromUser(email);
+    }  
     
     @GET
     @Path("modifyNote/{id}/{content}")
